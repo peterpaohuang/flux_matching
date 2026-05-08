@@ -1,0 +1,38 @@
+# model params
+model_type: 'FluxEDM'
+net_type: 'UNet'
+diffusion:
+  sigma_data: 0.5
+  p_mean: -1.2
+  p_std: 1.2
+  sigma_min: 0.002
+  sigma_max: 80
+  rho: 7
+  S_min: 0.01
+  S_max: 1
+  S_noise: 1.007
+network:
+  image_shape: [3, 64, 64]
+  n_channels: 128
+  ch_mults: [1, 2, 2, 2]
+  is_attn: [False, True, False, False]
+  dropout: 0.1
+  n_blocks: 2
+  use_res_for_updown: False
+
+# training params
+fid_stats_path: '../shared/fid_stats/fid_stats_celeba64_train_50000_ddim.npz'
+n_steps: 500000
+batch_size: 32
+lrate: 1.0e-4
+warm_steps: 2500
+load_step: -1
+flip: True
+ema: 0.9993
+mixing: True
+mixing_lam: 0.01
+
+# testing params
+n_sample: 30
+save_dir: './2000_unconditional'
+save_model: True
