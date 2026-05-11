@@ -2,7 +2,11 @@
 
 ![Flux Matching](assets/flux_matching.gif)
 
-**Flux Matching** is a generative modeling paradigm for learning data generating vector fields beyond the score function. The library (`src/`) is lightweight and dependency-free beyond PyTorch. Usage examples live in `examples/`, and each experiment in `experiments/` has its own README.
+Official implementation of [Generative Modeling with Flux Matching](https://arxiv.org/abs/2605.07319) by Peter Pao-Huang, Xiaojie Qiu, and Stefano Ermon.
+
+**Flux Matching** is a generative modeling paradigm for learning data generating vector fields beyond the score function. `src/` contains the core Flux Matching library. `examples/` contains simple usage examples to start training and sampling with Flux Matching. `experiments/` contains all scripts and settings to setup, run, and recreate experiment results from the paper.
+
+Please contact <peterph@stanford.edu> with any comments or issues.
 
 ---
 
@@ -35,8 +39,8 @@ model = torch.nn.Sequential(
     torch.nn.Linear(128, 2),
 )
 
-x = torch.randn(64, 2)          # clean samples
-sigma2 = torch.tensor(0.1)      # noise variance
+x = torch.randn(64, 2)
+sigma2 = torch.tensor(0.1)
 
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
@@ -64,3 +68,16 @@ Each experiment has its own self-contained directory with a dedicated README cov
 | [exp5_embed_structure](experiments/exp5_embed_structure/) | Embedding Structure in Generative Fields (Physics Simulation) |
 
 See each experiment's `README.md` for full reproduction instructions.
+
+## Citation
+
+```
+@misc{paohuang2026generativemodelingfluxmatching,
+      title={Generative Modeling with Flux Matching}, 
+      author={Peter Pao-Huang and Xiaojie Qiu and Stefano Ermon},
+      year={2026},
+      eprint={2605.07319},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
